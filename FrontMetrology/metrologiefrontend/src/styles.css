@@ -1,0 +1,327 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Inter', sans-serif; }
+
+
+.demo-2.main h4 {
+    margin: auto;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    line-height: 20px;
+    color: #0C2556;
+
+}
+
+
+button.logout {
+    position: relative;
+    width: 100px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    margin-right: 2%;
+}
+
+button.logout:hover {
+    color: #f0094a; 
+    background: transparent;
+    box-shadow: none;
+}
+
+button.logout:before,
+button.logout:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #f0094a;
+    box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003, 4px 4px 5px 0px #0002;
+    transition: 400ms ease all;
+}
+
+button.logout:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+button.logout:hover:before,
+button.logout:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+button.logout:focus {
+    color: #f0094a;
+}
+
+
+#online-circle {
+    color: greenyellow;
+    font-size: 10px;
+}
+
+#user-online {
+    color: grey;
+    font-size: 10px;
+}
+
+.user-img {
+    border-radius: 8px;
+    float: left;
+    margin-left: 16px;
+}
+
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: rgb(13, 184, 214);
+  }
+  
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: rgb(13, 184, 214);
+  }
+
+  .mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline {
+    color: rgb(80 163 185);
+  }
+
+  .mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline-thick {
+    color: rgb(13, 184, 214);
+  }
+
+
+
+
+  .nav-link:hover .bounce {
+    display: inline-block;
+    position: relative;
+    -moz-animation: bounce ease-in-out 0.5s 1 alternate;
+    ;
+    -o-animation: bounce ease-in-out 0.5s 1 alternate;
+    ;
+    -webkit-animation: bounce ease-in-out 0.5s 1 alternate;
+    ;
+    animation: bounce ease-in-out 0.5s 1 alternate;
+    ;
+    color: #ffffff;
+  }
+
+  .nav-link .bounce {
+    display: inline-block;
+    position: relative;
+    -moz-animation: bounce ease-in-out 0.5s 1 alternate;
+    ;
+    -o-animation: bounce ease-in-out 0.5s 1 alternate;
+    ;
+    -webkit-animation: bounce ease-in-out 0.5s 1 alternate;
+    ;
+    animation: bounce ease-in-out 0.5s 1 alternate;
+    ;
+    color: #ffffff;
+  }
+
+  
+  .nav-link p {
+  
+    color: #ffffff;
+  }
+
+  @-webkit-keyframes bounce {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    10% {
+      transform: rotate(10deg);
+    }
+
+    30% {
+      transform: rotate(0deg);
+    }
+
+    40% {
+      transform: rotate(-10deg);
+    }
+
+    50% {
+      transform: rotate(0deg);
+    }
+
+    60% {
+      transform: rotate(5deg);
+    }
+
+    70% {
+      transform: rotate(0deg);
+    }
+
+    80% {
+      transform: rotate(-5deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @-moz-keyframes bounce {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    10% {
+      transform: rotate(10deg);
+    }
+
+    30% {
+      transform: rotate(0deg);
+    }
+
+    40% {
+      transform: rotate(-10deg);
+    }
+
+    50% {
+      transform: rotate(0deg);
+    }
+
+    60% {
+      transform: rotate(5deg);
+    }
+
+    70% {
+      transform: rotate(0deg);
+    }
+
+    80% {
+      transform: rotate(-5deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @-o-keyframes bounce {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    10% {
+      transform: rotate(10deg);
+    }
+
+    30% {
+      transform: rotate(0deg);
+    }
+
+    40% {
+      transform: rotate(-10deg);
+    }
+
+    50% {
+      transform: rotate(0deg);
+    }
+
+    60% {
+      transform: rotate(5deg);
+    }
+
+    70% {
+      transform: rotate(0deg);
+    }
+
+    80% {
+      transform: rotate(-5deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @-ms-keyframes bounce {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    10% {
+      transform: rotate(10deg);
+    }
+
+    30% {
+      transform: rotate(0deg);
+    }
+
+    40% {
+      transform: rotate(-10deg);
+    }
+
+    50% {
+      transform: rotate(0deg);
+    }
+
+    60% {
+      transform: rotate(5deg);
+    }
+
+    70% {
+      transform: rotate(0deg);
+    }
+
+    80% {
+      transform: rotate(-5deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    10% {
+      transform: rotate(10deg);
+    }
+
+    30% {
+      transform: rotate(0deg);
+    }
+
+    40% {
+      transform: rotate(-10deg);
+    }
+
+    50% {
+      transform: rotate(0deg);
+    }
+
+    60% {
+      transform: rotate(5deg);
+    }
+
+    70% {
+      transform: rotate(0deg);
+    }
+
+    80% {
+      transform: rotate(-5deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+
+  }
+
+ 

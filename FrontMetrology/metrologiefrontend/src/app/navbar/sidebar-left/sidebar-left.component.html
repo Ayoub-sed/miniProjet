@@ -1,0 +1,110 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4 nav-compact">
+  <a href="" class="brand-link text-center">
+    <img src="/assets/img/PoulinaLogo.png" class="mr-3 poulina-img" style="width:90%; border-radius: 0;">
+  </a>
+  <div class="sidebar">
+    
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex text-center">
+      <div class="">
+        <img src="/assets/img/profile-user.png" class=" mr-4 user-img" alt="User Image">
+        <span>
+          <div class="">
+            <a class="d-block " style="color: #fff" id="fullNameUser">{{user}}</a>
+            <span id="user-online">
+              <i id="online-circle" class="fa fa-circle mr-1"></i>
+              <span style="color: rgba(255, 255, 255, 0.779)">Online</span>
+            </span>
+          </div>
+        </span>
+      </div>
+    </div>
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a  class="nav-link">
+            <i class="nav-icon fas fa-cogs bounce"></i>
+            <p>
+              Paramétrage
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+             <li class="nav-item" placement="bottom">
+              <a routerLink="GestionUtilisateur" class="nav-link">
+                <i class="fas fa-users bounce nav-icon"></i>
+                <p>Gestion utilisateurs</p>
+              </a>
+
+            <!-- <li class="nav-item" placement="bottom">
+              <a routerLink="GestionDomaine" class="nav-link">
+                <i class="fas fa-server bounce nav-icon"></i>
+                <p>Gestion domaines</p>
+              </a>
+            </li> -->
+            <li class="nav-item" placement="bottom">
+              <a routerLink="GestionPrestataire" class="nav-link">
+                <i class="fas fa-tools bounce nav-icon"></i>
+                <p>Gestion prestataires</p>
+              </a>
+            </li>
+            <li class="nav-item" placement="bottom">
+              <a routerLink="GestionCritere" class="nav-link">
+                <i class="fas fa-bullseye bounce nav-icon"></i>
+                <p>Gestion critères</p>
+              </a>
+            </li>
+
+            <li class="nav-item" placement="bottom">
+              <a routerLink="ListEquipement" class="nav-link">
+                <i class="fas fa-cubes bounce nav-icon"></i>
+                <p>Gestion équipements</p>
+              </a>
+            </li>
+            <li class="nav-item" placement="bottom">
+              <a routerLink="GestionTypeIntervention" class="nav-link">
+                <i class="fas fa-circle bounce nav-icon"></i>
+                <p>Gestion type interventions</p>
+              </a>
+            </li>
+          </ul>
+        </li> 
+
+        <li class="nav-item">
+          <a routerLink="GrilleControle" class="nav-link">
+            <i class="nav-icon far fa-clipboard bounce"></i>
+            <p>
+              Grille de contrôle
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="FraisIntervention" class="nav-link">
+            <i class="nav-icon far fa-clipboard bounce"></i>
+            <p>
+              Frais Intervention
+            </p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+
+</aside>
+
+
+<style>
+  .sidebar {
+    background: rgb(9, 18, 85);
+    font-family: 'Inter', sans-serif;
+
+
+  }
+
+
+  .main-sidebar {
+    background-color: white;
+  }
+</style>

@@ -1,0 +1,100 @@
+
+
+  <div class="content">
+    <div class="card card-info  mt-3 p-2">
+
+      <h3 style=" font-family: 'Inter', sans-serif;  color: #091255; font-size: larger;" id="fullNameUser"> 
+          <b>Liste Des Critères</b> 
+      </h3>
+  
+      <img src="assets\img\output-onlinepngtools.png">
+   </div>
+  
+    <div class="card">
+
+      <div class="card-header m-2">
+
+   
+        <div class="input-group mb-3 col-4 float-right">
+          <div class="input-group-append ">
+              <button class="btn" type="button" style="background-color: #4371f7; color: white; border-radius: 1px;">
+                <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <input type="text" class="form-control" placeholder="Chercher un critère..."  [(ngModel)]="data"  >
+       </div>
+    
+        
+    </div> 
+
+      <div class="card-body"> 
+        <div class="row" style="justify-items: center; align-items: center;margin-top: -4px;">
+          <div class="col-4">
+          <button type="button " class="btn btn-light " (click)="openComponentForPost()"
+          style="margin-bottom: 16px; align-items: center;"> <i class="fas fa-plus-circle " ></i> Ajouter un critère
+          </button>
+          </div>
+
+      </div>
+        <table class="table  table-striped ">
+            <thead >
+            <tr>
+              <th class="align-middle ">Code</th>
+              <th class="align-middle ">Libelle</th>
+              <th class="align-middle ">Axe</th>
+              <th class="align-middle " >Coefficient</th>
+              <th class="align-middle ">Action(s)</th>
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="
+                  let g of critereService.listCritere | filter:data 
+                  | paginate: { itemsPerPage: 10, currentPage: current}" class="sizeText">
+                  
+                    <td class="align-middle">{{ g.codeCritere }}</td>
+                    <td class="align-middle">{{ g.libelleCritere }}</td>
+                    <td class="align-middle">{{ g.axe}}</td>
+                    <!-- <td class="align-middle "><span *ngIf="g.userEmail !== null"></span>
+                      <strong *ngIf="g.userEmail == null">-</strong></td> -->
+                    <td class="align-middle ">{{ g.coefficient }}</td>
+                    <td class="align-middle p-0" >
+                        <div class="row p-0">
+                      <a class="nav-link col" style="margin-right: -37px;"><i
+                          class="bounce far fa-edit fa-2x"
+                          style=" color:#4371f7 ;cursor: pointer;  font-size: 140%; margin-bottom: -25px; margin-top: -5%; "
+                          (click)="openComponentForUpdate(g) " tooltip="consulter"></i></a>
+                      <a class="nav-link col" style="margin-right: -6px;"><i
+                          class="bounce far fa-trash-alt text-danger  fa-2x"
+                          style="cursor: pointer; font-size: 140%;  margin-top: -18%; margin-bottom: -31%;"
+                          (click)="onDelete(g)" tooltip="Supprimer"></i></a>
+                       <!-- </div>
+                         <a class="nav-link col" style="margin-right: -37px;"><i
+                            class="bounce far fa-edit text-success  fa-2x"
+                            style="cursor: pointer;  font-size: 140%; margin-bottom: -25px; margin-top: -5%; "
+                              tooltip="consulter"></i></a>
+                        <a class="nav-link col" style="margin-right: -6px;"><i
+                            class="bounce far fa-trash-alt text-danger  fa-2x"
+                            style="cursor: pointer; font-size: 140%;  margin-top: -18%; margin-bottom: -31%;"
+                            tooltip="Supprimer"></i></a> -->
+                          </div>
+                    </td>
+            </tr>
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+
+
+      <pagination-controls   previousLabel="Précédent" 
+      nextLabel="Suivant" (pageChange)="current = $event" style="text-align: center; "></pagination-controls>
+      <ngx-spinner style="background-color:#4371f7" 
+       size="small" type="line-scale-party" [fullScreen]="true">
+        <p  style="color: white">Chargement... </p>
+      </ngx-spinner>
+    </div>
+
+
+</div>

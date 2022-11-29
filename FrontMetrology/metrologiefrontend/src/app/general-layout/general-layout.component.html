@@ -1,0 +1,83 @@
+<!-- <div *ngIf="authentication?.currentUser!=null"> -->
+  <app-header-navbar></app-header-navbar>
+  <app-sidebar-left></app-sidebar-left>
+  <div class="content-wrapper">
+    <section class="content-header">
+      
+      <div class="container-fluid">
+      
+        <router-outlet></router-outlet>
+      </div>
+    </section>
+  </div>
+<!-- </div> -->
+<style>
+  .animate {
+    position: relative;
+    color: transparent;
+    padding: 10px;
+    overflow: hidden;
+    margin: 20px;
+    animation: textappear .1s .5s forwards;
+  }
+
+  .animate::before {
+    content: '';
+    position: absolute;
+    background: rgb(4, 0, 255);
+    width: 100%;
+    top: 0;
+    bottom: 0;
+  }
+
+  .right::before {
+    animation: sliderRight 2s forwards;
+  }
+
+  .left::before {
+    animation: sliderLeft 2s forwards;
+  }
+
+  @keyframes textappear {
+    100% {
+      color: rgb(78, 76, 160);
+    }
+  }
+
+  @keyframes sliderRight {
+    0% {
+      right: 100%;
+    }
+
+    100% {
+      right: -100%;
+    }
+  }
+
+  @keyframes sliderLeft {
+    0% {
+      left: 100%;
+    }
+
+    100% {
+      left: -100%;
+    }
+  }
+  .animate {
+    white-space: nowrap;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #FE4D3D;
+    font-family: arial;
+    color: #f2f7f8;
+  }
+  .content-wrapper {
+    background-color: #f2f7f8;
+}
+
+
+
+
+</style>

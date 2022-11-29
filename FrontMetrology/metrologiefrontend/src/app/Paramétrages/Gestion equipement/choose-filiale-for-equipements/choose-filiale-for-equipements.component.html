@@ -1,0 +1,71 @@
+
+
+  <div class="content">
+
+    <div class="card card-info  mt-3 p-2">
+
+      <h3 style=" font-family: 'Inter', sans-serif;  color: #091255; font-size: larger;" id="fullNameUser"> 
+          <b>Listes Des Equipements</b> 
+      </h3>
+  
+      <img src="assets\img\output-onlinepngtools.png">
+   </div>
+
+
+    <div class="card">
+
+             
+      <div class="card-header m-2">
+
+   
+
+
+       
+
+        <div class="form-group  mb-3 col-4 float-right ">
+         <select   [(ngModel)]="data" (change)="selectSecteur()" class="form-control">
+           <option selected [disabled]>Sélectionner un secteur d'activité</option>
+ 
+           <option *ngFor="let pole of setArray" >{{pole}}</option>
+    
+         </select>
+         </div>
+         
+ 
+         
+     </div> 
+      <div class="card-body"> 
+        <div class="input-group">
+  
+          <label>Choisir une filiale : </label>
+          <div  class="input-group">
+       
+            <ng-select [items]="subsidiaryService.listSubsidiary " (change)="onChangeSubsidiary($event)"   
+            style="width: 95%;"  placeholder="Sélectionnez un département" 
+              bindLabel="subsidiaryCode"  bindLabel="label"  bindValue="subsidiaryId"
+            notFoundText="Pas de résultat" loadingText="Chargement...." >
+            <ng-template ng-option-tmp let-item="item" >
+               #{{item.entityCode}}#{{item.label}}
+             
+            </ng-template>
+          </ng-select>
+
+          
+         <div class="input-group-prepend">
+          <button type="button" class="btn btn-info " style="background-color: #091255" (click)="choix()">
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+          </div>
+
+
+        </div>
+
+  
+        
+       
+       
+      </div>
+    </div>
+</div>
+

@@ -1,0 +1,57 @@
+<div class="modal-header ">
+    <h4 *ngIf="userService.Method == 'Post'"
+    class="modal-title pull-left text-secondary ml-1 m-2"  style="font-size: 24px;">Ajout d'un type intervention</h4>
+    <h4 *ngIf="userService.Method == 'Put'"
+    class="modal-title pull-left text-secondary ml-1 m-2"  style="font-size: 24px;">Modification d'un type d'intervention</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body ">
+    <div class="container">
+  
+      
+      <form [formGroup]="typeInterventionService.formTypeIntervention">
+        <!-- <div class="form-group">
+  
+          <label>Utilisateur : </label>
+          <div class="input-group" *ngIf="userService.Method == 'Post'">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-chevron-circle-down " style="color:lightcoral;"></i></span>
+            </div>
+            <ng-select [items]="ListUser" (search)="onSearchUser($event)" (change)="onChangeUser($event)"
+              formControlName="userId" style="width: 410px;" placeholder="Sélectionnez un utilisateur"
+               bindLabel="matricule" bindLabel="fullName" autofocus bindValue="userID"
+              notFoundText="Pas de résultat" loadingText="Chargement....">
+              <ng-template ng-option-tmp let-item="item">
+                {{item.fullName}}
+                {{item.matricule}}
+              </ng-template>
+            </ng-select>
+          </div>
+
+        </div> -->
+  
+        <div class="form-group">
+          <label>Libelle :</label>
+          <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-tags" style="color:lightcoral;"></i></span>
+                  </div>
+               <input class="form-control" type="text" formControlName="libelleTypeInterv">      
+      
+          </div>
+        </div>
+
+
+    
+  <div class="modal-footer ">
+    <button type="button" class=" btn btn-light col-3 mr-2 " (click)="onSubmit()"
+      [disabled]="typeInterventionService.formTypeIntervention.invalid"><i class="fas fa-check"></i>
+      Valider</button>
+  </div>
+
+  
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" color="#fff" size="medium" type="line-scale-party" [fullScreen]="true">
+  <p style="color: white">Chargement... </p>
+</ngx-spinner>

@@ -1,0 +1,89 @@
+
+
+  <div class="content">
+    <div class="card">
+
+        <div class="card-header mt-2" style="position: relative;" style=" background: white;">
+    
+            <div class="content" style="display: inline-block;">
+                <div class="card-title text-secondary" style="font-size: 20px;font-style: normal;">Liste des Affectations</div>
+               
+            </div>
+        </div>
+
+      <div class="card-body"> 
+        
+        <div class="row" style="justify-items: center; align-items: center;margin-top: -4px;">
+            <div class="col-4">
+        <button type="button" class="btn btn-light" (click)="openComponentForPost()"
+        style="margin-bottom: 16px;"> <i class="fas fa-plus-circle " ></i> Affectation filiale critère</button>
+        </div>
+
+        <div class="form-group ml-3 mr-auto col-md-3"
+        >
+        <div class="input-group">
+          <!-- <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-search" style="color:lightcoral;"></i></span>
+          </div> -->
+
+          <input type="text" class="form-control input-group " placeholder="Chercher un critère.." [(ngModel)]="data">
+        </div>
+      </div>
+        </div>
+        <table class="table  table-hover ">
+            <thead class="text-white " style="background-color: #4371f7  !important; ">
+            <tr>
+              <th class="align-middle ">Code Critère</th>
+              <th class="align-middle ">Libelle Critère</th>
+              <th class="align-middle ">Libelle Filiale</th>
+              <th class="align-middle ">Action(s)</th>
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="
+                  let g of filialecritereService.listFilaileCritere | filter:data 
+                  | paginate: { itemsPerPage: 12, currentPage: current}" class="sizeText">
+                  
+                    <td class="align-middle">{{ g.codeCritere }}</td>
+                    <td class="align-middle">{{ g.libelleCritere }}</td>
+                    <td class="align-middle">{{ g.subsidiarylabel }}</td>
+                    <td class="align-middle p-0" >
+                        <div class="row p-0">
+                      <!-- <a class="nav-link col" style="margin-right: -37px;"><i
+                          class="bounce far fa-edit text-success  fa-2x"
+                          style="cursor: pointer;  font-size: 140%; margin-bottom: -25px; margin-top: -5%; "
+                          (click)="openComponentForUpdate(g) " tooltip="consulter"></i></a> -->
+                      <a class="nav-link col" style="margin-right: -6px;"><i
+                          class="bounce far fa-trash-alt text-danger  fa-2x"
+                          style="cursor: pointer; font-size: 140%;  margin-top: -18%; margin-bottom: -31%;"
+                          (click)="onDelete(g)" tooltip="Supprimer"></i></a>
+                       <!-- </div>
+                         <a class="nav-link col" style="margin-right: -37px;"><i
+                            class="bounce far fa-edit text-success  fa-2x"
+                            style="cursor: pointer;  font-size: 140%; margin-bottom: -25px; margin-top: -5%; "
+                              tooltip="consulter"></i></a>
+                        <a class="nav-link col" style="margin-right: -6px;"><i
+                            class="bounce far fa-trash-alt text-danger  fa-2x"
+                            style="cursor: pointer; font-size: 140%;  margin-top: -18%; margin-bottom: -31%;"
+                            tooltip="Supprimer"></i></a> -->
+                          </div>
+                    </td>
+            </tr>
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+
+
+    </div>
+
+
+</div>
+
+<pagination-controls (pageChange)="current = $event" style="text-align: center;"></pagination-controls>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" color="#fff" size="medium" type="line-scale-party" [fullScreen]="true">
+<p style="color: white">Chargement... </p>
+</ngx-spinner>

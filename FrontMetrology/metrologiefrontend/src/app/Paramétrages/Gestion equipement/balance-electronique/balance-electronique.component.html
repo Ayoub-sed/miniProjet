@@ -1,0 +1,76 @@
+<div class="row example-container mt-3 col-12">
+    <div class="col">
+        <form [formGroup]="equipementservice.formEquipement">
+            <div class="form-group">
+                <label>Porté max :</label>
+                <div class="input-group">
+                    <input class="form-control" type="number" style="width: 215px" formControlName="porteMax">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Porté min :</label>
+                <div class="input-group">
+
+                    <input class="form-control" type="number"  style="width: 215px" formControlName="porteMin">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <form [formGroup]="equipementservice.formEquipement">
+            <div class="form-group">
+                <label>Echellon De Verification :</label>
+                <div class="input-group">
+                    <input class="form-control" type="number" style="width: 215px" formControlName="echellonDeVerification">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>N° de Capteurs</label>
+                <div class="input-group">
+
+                    <input class="form-control" type="number"  style="width: 215px" formControlName="nombreCapteurs">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <form [formGroup]="equipementservice.formEquipement">
+            <div class="form-group">
+                <label>N° d'approbation :</label>
+                <div class="input-group">
+                    <input class="form-control" type="number" style="width: 215px" formControlName="numApprobation">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>N° de vignette :</label>
+                <div class="input-group">
+
+                    <input class="form-control" type="number"  style="width: 215px" formControlName="numVignette">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col">
+        <form [formGroup]="equipementservice.formEquipement">
+            <div class="form-group">
+                <label>Date de pinconnage :</label>
+                <div class="input-group">
+                    <input class="form-control" type="date" style="width: 215px" formControlName="datePoinconnage">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Date de réparation :</label>
+                <div class="input-group">
+
+                    <input class="form-control" type="date" style="width: 215px" formControlName="dateReparation">
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>      <div class="modal-footer ">
+<button type="button" class=" btn btn-light float-right" (click)="OnSubmit()"><i class="fas fa-check" ></i>
+Valider</button>
+</div>

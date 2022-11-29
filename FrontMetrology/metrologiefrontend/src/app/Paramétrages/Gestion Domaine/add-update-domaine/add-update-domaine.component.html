@@ -1,0 +1,42 @@
+<div class="modal-header ">
+    <h4 *ngIf="userService.Method == 'Post'"
+    class="modal-title pull-left text-secondary ml-1 m-2"  style="font-size: 24px;">Ajout d'un domaine</h4>
+    <h4 *ngIf="userService.Method == 'Put'"
+    class="modal-title pull-left text-secondary ml-1 m-2"  style="font-size: 24px;">Modification d'un domaine</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body ">
+    <div class="container">
+  
+      
+      <form [formGroup]="domaineService.formDomaine">
+        <div class="form-group">
+  
+          <label>Libelle : </label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-tags" style="color:lightcoral;"></i></span>
+            </div>
+         <input class="form-control" type="text" formControlName="libelleDomaine">
+          </div>
+
+
+        </div>
+  
+        
+      </form>
+  
+    </div>
+  </div>
+  <div class="modal-footer ">
+    <button type="button" class=" btn btn-light col-3 mr-2 " (click)="onSubmit()"
+      [disabled]="domaineService.formDomaine.invalid"><i class="fas fa-check"></i>
+      Valider</button>
+  </div>
+
+  
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" color="#fff" size="medium" type="line-scale-party" [fullScreen]="true">
+  <p style="color: white">Chargement... </p>
+</ngx-spinner>

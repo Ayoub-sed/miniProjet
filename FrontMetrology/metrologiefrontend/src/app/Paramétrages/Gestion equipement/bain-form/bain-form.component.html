@@ -1,0 +1,42 @@
+<div class="row example-container mt-3 col-12">
+    <div class="col" >
+        <form  [formGroup]="equipementservice.formEquipement" >
+            <div class="form-group ">
+                <label>Temperature :{{userService.Method}}</label>
+                <div class="input-group" >
+                    <input class="form-control"  type="number" formControlName="temperature" >
+                </div>
+            </div>
+          
+        </form>
+    </div>
+
+    <div class="col">
+        <form  [formGroup]="equipementservice.formEquipement">
+            <div class="form-group">
+                <label>Date d'Etalonnage :</label>
+                <div class="input-group">
+                    <input class="form-control" type="date" style="width: 215px"  formControlName="dateEtalonnage" [ngModel]="this.equipementservice.formEquipement.value.dateEtalonnage | date:'yyyy-MM-dd'">
+                </div>
+                </div>
+        </form>
+    </div>            
+    
+    
+    
+        <div class="col">
+
+    <div class="col">
+        <form   [formGroup]="equipementservice.formEquipement">  
+            <div class="form-group">
+                <label>Date de Verification :</label>
+                <div class="input-group">
+                    <input class="form-control" type="date" style="width: 215px"  formControlName="dateVerification" [ngModel]="this.equipementservice.formEquipement.value.dateVerification| date:'yyyy-MM-dd'">
+                </div>
+            </div>
+          
+        </form>
+    </div><div class="modal-footer ">
+        <button type="button" class=" btn btn-light float-right" [disabled]="userService.Method == 'Detail'" (click)="OnSubmit()"><i class="fas fa-check"  ></i>
+            Valider</button>
+    </div>

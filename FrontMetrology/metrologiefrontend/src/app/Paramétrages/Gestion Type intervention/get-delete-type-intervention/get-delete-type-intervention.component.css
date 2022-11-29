@@ -1,0 +1,19 @@
+button.btn-light {
+  color: rgb(9, 18, 85);
+  background-color: #ffffff;
+  border: 2px solid;
+  border-color: rgb(9, 18, 85);
+}
+
+button.btn-light:disabled,
+.btn-light[disabled]{
+  border-radius: 6px;
+  background-color: #1F2D3D;
+  color: #ffffff;
+}
+
+button.btn-light:hover, .btn-light:focus, .btn-light:active, .btn-light.active, .open>.dropdown-toggle.btn-light {
+color: #fff;
+background-color: rgb(9, 18, 85);
+border-color:  rgb(9, 18, 85);
+}

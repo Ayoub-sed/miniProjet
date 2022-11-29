@@ -1,0 +1,73 @@
+<div class="modal-header ">
+    <h4 *ngIf="userService.Method == 'Post'" class="modal-title text-secondary ml-1 m-2"
+      style="font-size: 24px; text-align: center;">Ajout d'un critère</h4>
+    <h4 *ngIf="userService.Method == 'Put'" class="modal-title text-secondary ml-1 m-2"
+      style="font-size: 24px;">Modification d'un critère</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="card-body">
+  
+    <div class="row">
+      <div class="col">
+        <form [formGroup]="critereService.formCritere">
+        <div class="form-group">
+          <label>Code</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key" style="color:lightcoral;"></i></span>
+            </div>
+            <input class="form-control" type="number" formControlName="codeCritere">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Libelle</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-tags" style="color:lightcoral;"></i></span>
+            </div>
+            <input class="form-control" type="text" formControlName="libelleCritere">
+          </div>
+        </div>
+        </form>
+      </div>
+  
+  
+  
+      <div class="col">
+        <form [formGroup]="critereService.formCritere">
+        <div class="form-group">
+          <label>Axe</label>
+          <div class="input-group" >
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-server" style="color:lightcoral;"></i></span>
+            </div>
+            <input class="form-control" type="text" formControlName="axe">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Coefficient</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-percent" style="color:lightcoral;"></i></span>
+            </div>
+            <input class="form-control" type="text" formControlName="coefficient">
+          </div>
+        </div>
+        </form>
+      </div>
+  
+  
+    </div>
+  
+  </div>
+  <div class="modal-footer ">
+    <button type="button" class=" btn btn-light col-3 mr-2 " (click)="onSubmit()"
+      [disabled]="critereService.formCritere.invalid"><i class="fas fa-check"></i>
+      Valider</button>
+  </div>
+  
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" color="#fff" size="medium" type="line-scale-party" [fullScreen]="true">
+    <p style="color: white">Chargement... </p>
+  </ngx-spinner>

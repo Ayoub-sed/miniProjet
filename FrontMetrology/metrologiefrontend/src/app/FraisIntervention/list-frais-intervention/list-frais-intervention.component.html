@@ -1,0 +1,116 @@
+<div class="content">
+
+    <div class="card card-info  mt-3 p-2">
+
+        <h3 style=" font-family: 'Inter', sans-serif;  color: #091255; font-size: larger;" id="fullNameUser"> 
+            <b>Liste des Types
+                d'intervention <span style="color:#4371f7">{{label}}</span> </b> 
+        </h3>
+        <img src="assets\img\output-onlinepngtools.png">
+    
+       
+     </div>
+
+
+    <div class="card">
+       
+             <div class="card-header m-2">
+             
+
+
+               <div class="form-group">
+                <label>Choisir une date :</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-calendar-alt" style="color:#091255"></i></span>
+                  </div>
+
+                  <input class="form-control" type="year" min="1967" max="{{DateMax}}"
+                [(ngModel)]="DateValue" step="1" value="{{DateValue}}"> 
+                <div class="input-group-prepend">
+                 
+                <button type="button" class="btn btn-info " style="background-color: #091255" (click)="changeDate()">
+                    <i class="fas fa-check"></i>
+                  </button>
+                
+                </div>
+                  </div>
+                </div>    
+            
+            </div>
+
+    <div class="card-body"> 
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <button type="button " class="btn btn-light float-right" (click)="openComponentForPost()"
+                style="margin-bottom: 16px; align-items: center;"> <i class="fas fa-plus-circle " ></i> Ajouter un frais d'intervention
+                </button>
+              </div>
+              <div class="col">
+                <button type="button " class="btn btn-light " 
+                style="margin-bottom: 16px; align-items: center; " disabled> Somme total des interventions {{somme}}
+                </button>
+              </div>
+    
+            </div>
+          </div>
+
+
+    <div *ngIf="somme !=0">
+        <table class="table  table-hover text-center">
+            <thead class="text-white text-center" style="background-color: #4371f7  !important; ">
+                <tr>
+                    <th class="align-middle ">Type Intervention</th>
+                    <th class="align-middle ">Libelle Intervention
+                <tr>
+                    <td class="align-middle " style="text-align: left; width:700px">Commentaire</td>
+                    <td class="align-middle " style="text-align: left; width:200px">Date Intervention</td>
+                    <td class="align-middle "style="text-align: left; width:200px">Action</td>
+                </tr>
+                </th>
+
+                <th class="align-middle ">Somme type Intervention</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let data of  fraisInterventionservice.listfraisinterventiondto ">
+                <tr>
+                    <td *ngIf="data.typeIntervention ==0 "><strong>Etalonnage</strong></td>
+                    <td *ngIf="data.typeIntervention ==1 "><strong>Verification</strong></td>
+                    <td *ngIf="data.typeIntervention ==2 "><strong>Poinconnage</strong></td>
+                    <td *ngIf="data.typeIntervention ==3 "><strong>Reparation</strong></td>
+                    <td *ngIf="data.typeIntervention ==4 "><strong>Pesage</strong></td>
+                    <ng-container *ngFor="let c of data.fraisIntervention">
+                <tr>
+
+                    <td class="align-left" style="text-align: left; width:700px">{{c.libelleIntervention}}
+                    </td>
+                    <td class="align-left" >{{c.dateIntervention}}
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="btn btn-light" style="font-size: 1em;" (click)="show(c)">
+                            <i class="fa fa-info-circle fa-lg" style="font-size: 0.75em; color: blueviolet;"></i>
+                        </button> &nbsp;
+                        <button type="button" class="btn btn-light" style="font-size: 1em;" (click)="update(c)">
+                            <i class="fas fa-edit" style="font-size: 0.75em; color: green;"></i>
+                        </button>&nbsp;
+                        <button type="button" class="btn btn-light" style="font-size: 1em;" (click)="delete(c)">
+                            <i class="fa fa-trash fa-lg" style="font-size: 0.75em; color: red;"></i>
+                        </button>
+                    </td>
+                
+                </tr>
+                </ng-container>
+                <td>
+                    <tr class="align-center" style="text-align: center;">{{data.sommeFrais}}</tr>
+                </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div *ngIf="somme==0">
+        <h1 style="text-align:center ; margin-top: 10%;"><strong> Pas de données pour l'année {{DateValue}}</strong>
+        </h1>
+    </div>
+</div></div>

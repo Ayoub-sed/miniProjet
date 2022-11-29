@@ -1,0 +1,219 @@
+<div class="modal-header ">
+  <h4 *ngIf="userService.Method == 'Post'" class="modal-title text-secondary ml-1 m-2"
+    style="font-size: 24px; text-align: center;">Ajout d'un prestataire</h4>
+  <h4 *ngIf="userService.Method == 'Put'" class="modal-title text-secondary ml-1 m-2"
+    style="font-size: 24px;">Modification d'un prestataire</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="card-body">
+
+
+  <div class="form-group  row">
+    <!-- <label for="Label" class="col-sm-2">Fournisseur </label> -->
+    <div class="col-sm-12">
+       <div class="container">
+       <div class="input-group input-group-sm ">
+          <input placeholder="Chercher un fournisseur" type="text" #titleInput class="form-control"  style="width: 10%;
+          margin-left: 1px; text-align: center;">
+          <div class="input-group-append">
+            <button type="button" class="btn btn-default" (click)="chercherFournisseur(titleInput.value)"><i class="fas fa-search"></i></button>
+          </div>
+          </div>      
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+ 
+      <div class="container" *ngIf="listeTest==true">
+      <table class="table table-bordered table-sm" >
+        <thead class=" text-center " style="background-color: #afc7ca; ">
+            <tr>
+                <th class="align-middle table-info table-border ">Code fournisseur</th>
+                <th class="align-middle table-info table-border ">Nom fournisseur</th>
+                <th class="align-middle table-info table-border ">Opération</th>
+            </tr>
+        </thead>
+        <tbody class="text-center ">
+            <tr *ngFor="let pd of ListFournisseur | paginate: {id: 'supplierAddPagination',itemsPerPage: 5, currentPage: currentPg}" >
+                <td class=" align-middle table-border " >{{pd.codeSupplier}}</td>
+                <td class=" align-middle table-border " >{{pd.supplierName}}</td>
+                          
+                <td style="width: 150px!important ">
+                      <!-- Default switch -->
+
+              </td>
+                <td style="width: 150px!important ">
+                    <button class="btn btn-success" [class.selectedRow]="rowIsSelected(pd.supplierId)" (click)="onRowClick(pd)" style="cursor: pointer;">
+                      <span class="fas fa-plus-circle "></span>
+                  </button>
+                </td>
+            </tr>
+        </tbody>
+       </table>
+       <div class="card-footer clearfix text-center">
+        <pagination-controls id= 'supplierAddPagination' (pageChange)="currentPg = $event"></pagination-controls>
+      </div>
+      </div>
+
+  <!-- <div class="row">
+    <div class="col">
+      <form [formGroup]="prestataireService.formPrestataire">
+      <div class="form-group">
+        <label>Nom & Prénom :</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user" style="color:lightcoral;"></i></span>
+          </div>
+          <input class="form-control" type="text" formControlName="nomPrenom">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Adresse :</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-map-marker" style="color:lightcoral;"></i></span>
+          </div>
+          <input class="form-control" type="text" formControlName="adresse">
+        </div>
+      </div>
+      </form>
+    </div>
+
+
+
+    <div class="col">
+      <form [formGroup]="prestataireService.formPrestataire">
+      <div class="form-group">
+        <label>Matricule :</label>
+        <div class="input-group" >
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card" style="color:lightcoral;"></i></span>
+          </div>
+          <input class="form-control" type="text" formControlName="matricule">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Téléphone :</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-phone" style="color:lightcoral;"></i></span>
+          </div>
+          <input class="form-control" type="text" formControlName="telephone">
+        </div>
+      </div>
+      </form>
+    </div>
+
+
+  </div>
+
+  <div class="row" *ngIf="userService.Method == 'Post'">
+  <div class="form-group">
+    <label>Domaine : </label>
+    <div class="input-group" *ngIf="userService.Method == 'Post'">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-chevron-circle-down " style="color:lightcoral;"></i></span>
+      </div>
+      <ng-select [items]="domaineService.listDomaines" (change)="onChangeDomain($event)"
+           style="width: 720px;" placeholder="Sélectionnez un domaine"
+         bindLabel="domaineId" bindLabel="libelleDomaine" autofocus bindValue="domaineId"
+        notFoundText="Pas de résultat" loadingText="Chargement....">
+        <ng-template ng-option-tmp let-item="item">
+          {{item.libelleDomaine}}
+        </ng-template>
+      </ng-select>
+    </div>
+  </div>
+  </div>
+  <div *ngIf="domaineService.hideDomainList==true" class="row">
+  <form [formGroup]="domainePrestataireService.formDomainePrestataire">
+  <div class="form-group">
+    <label>Liste des domaines :</label>
+    <div class="input-group" *ngIf="userService.Method == 'Post'">
+      <table class="table table-hover table-bordered" style="width: 760px;">
+        <thead class="text-white text-center" style="background-color: rgb(255, 183, 183)  !important; ">
+          <tr>
+            <th class="align-middle " >Libelle domaine</th>
+            <th class="align-middle " >Agrée</th>
+            <th class="align-middle " >Accridité</th>
+
+     </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let domaine of domaineService.listDomaineSelectionnes ; let i = index">
+       <td>
+         {{ domaine.libelleDomaine }}
+       </td>
+       <td style="text-align: center;">
+        <input type="checkbox" formControlName="agree" (click)="checkActiveAgree($event,i,domaine)"/>
+      </td>
+       <td style="text-align: center;">
+        <input type="checkbox" formControlName="accridite" (click)="checkActiveAccridite($event,i,domaine)"/>
+       </td>
+
+
+     
+     </tr>
+     </tbody>
+   </table>       
+</div>
+  </div>
+  </form>
+</div>
+
+
+
+
+<div *ngIf="domaineService.hideDomainListForupdate==true" class="row">
+  <form [formGroup]="domainePrestataireService.formDomainePrestataire">
+  <div class="form-group">
+    <label>Liste des domaines :</label>
+    <div class="input-group" >
+      <table class="table table-hover table-bordered" style="width: 760px;">
+        <thead class="text-white text-center" style="background-color: rgb(255, 183, 183)  !important; ">
+          <tr>
+            <th class="align-middle " >Libelle domaine</th>
+            <th class="align-middle " >Agrée</th>
+            <th class="align-middle " >Accridité</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let domaine of prestataireService.prestataireDto.listPresDomDto ; let i = index">
+       <td>
+         {{ domaine.libelleDomaine }}
+       </td>
+       <td style="text-align: center;">
+        <input type="checkbox"  (click)="checkActiveAgree($event,i,domaine)" [checked]="domaine.agree"/>
+      </td>
+       <td style="text-align: center;">
+        <input type="checkbox" (click)="checkActiveAccridite($event,i,domaine)" [checked]="domaine.accredite"/>
+       </td>
+     </tr>
+     </tbody>
+   </table>       
+</div>
+  </div>
+  </form>
+</div>
+ -->
+
+
+
+</div>
+<!-- <div class="modal-footer ">
+  <button type="button" class=" btn btn-light col-3 mr-2 " (click)="onSubmit()"
+    [disabled]="prestataireService.formPrestataire.invalid"><i class="fas fa-check"></i>
+    Valider</button>
+</div> -->
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" color="#fff" size="medium" type="line-scale-party" [fullScreen]="true">
+  <p style="color: white">Chargement... </p>
+</ngx-spinner>

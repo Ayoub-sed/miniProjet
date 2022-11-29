@@ -1,0 +1,93 @@
+<div class="modal-header ">
+  <h4 *ngIf="userService.Method == 'Post'" class="modal-title pull-left text-secondary ml-1 m-2"
+    style="font-size: 24px;">Ajout frais intervention</h4>
+  <h4 *ngIf="userService.Method == 'Put'" class="modal-title pull-left text-secondary ml-1 m-2"
+    style="font-size: 24px;">Modification frais intervention</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="card-body">
+  <form [formGroup]="fraisInterventionservice.AddOrUpdateFraisInterventionForm">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label>Libelle Intervention</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-pen-alt" style="color:lightcoral;"></i></span>
+            </div>
+            <input class="form-control" type="text" formControlName="LibelleIntervention">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Date Intervention</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-calendar-alt" style="color:lightcoral;"></i></span>
+            </div>
+            <input class="form-control" type="date" formControlName="DateIntervention">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <label>Frais</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-money-check-alt" style="color:lightcoral;"></i></span>
+              </div>
+              <input class="form-control" type="number" formControlName="Frais">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Type Intervention</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-pen-fancy" style="color:lightcoral;"></i></span>
+              </div>
+              <select class="form-select" id="floatingSelect" formControlName="TypeIntervention"
+                style="width: 400px; height: 35px; border-color: #ced4da">
+                <option value=0>Etalonnage</option>
+                <option value=1>Verification</option>
+                <option value=2>Poinconnage</option>
+                <option value=3>Reparation</option>
+                <option value=3>Pesage</option>
+
+              </select>
+              <div class="form-group">
+                <label>Equipement</label>
+              <ng-select [items]="this.equipementService.listequipement" 
+                formControlName="fkEquipement" style="width: 410px;" placeholder="Sélectionnez un equipement"
+                bindLabel="matricule" bindLabel="fullName" autofocus bindValue="userID" notFoundText="Pas de résultat"
+                loadingText="Chargement....">
+                <ng-template ng-option-tmp let-item="item">
+                  {{item.libelle}}
+               
+                </ng-template>
+              </ng-select>
+            </div>
+
+              <!-- <div class="form-group  mb-3 col-4 float-right ">
+                <select   class="form-control">
+                  <option selected [disabled]>Sélectionner un secteur d'activité</option>
+        
+                  <option *ngFor="let e of this.equipementService.listequipement ">{{e.libelle}}</option>
+           
+                </select>
+                </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer ">
+  <button type="button" class=" btn btn-light col-3 mr-2" (click)="onSubmit()"
+    [disabled]="fraisInterventionservice.AddOrUpdateFraisInterventionForm.invalid"><i class="fas fa-check"></i>
+    Valider</button>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" color="#fff" size="medium" type="line-scale-party" [fullScreen]="true">
+  <p style="color: white">Chargement... </p>
+</ngx-spinner>

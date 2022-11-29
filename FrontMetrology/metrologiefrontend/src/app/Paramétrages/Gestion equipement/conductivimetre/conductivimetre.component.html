@@ -1,0 +1,54 @@
+<div class="row example-container mt-3 col-12">
+
+    <div class="col">
+
+        <form [formGroup]="equipementservice.formEquipement">
+                <div class="form-group">
+                    <label>Temperature :</label>
+                    <div class="input-group">
+
+                        <input class="form-control" type="text" formControlName="temperature">
+                    </div>
+                </div>
+        </form>
+    </div>            
+    
+    
+    
+        <div class="col">
+
+            <form [formGroup]="equipementservice.formEquipement">
+                <div class="form-group">
+                    <label>Date d'Etalonnage :</label>
+                    <div class="input-group">
+
+                        <input class="form-control" type="date" formControlName="dateEtalonnage">
+                    </div>
+                </div>
+
+            </form>
+
+        </div>           
+
+        <div class="col">
+
+                    <form [formGroup]="equipementservice.formEquipement">
+                        <div class="form-group">
+                            <label>Date de Verification :</label>
+                            <div class="input-group">
+
+                                <input class="form-control" type="date" formControlName="dateVerification">
+                            </div>
+                        </div>
+
+                    </form>
+
+        </div>
+  
+ </div>
+
+
+    <div class="modal-footer ">
+        <button type="button" class=" btn btn-light float-right" (click)="OnSubmit()"><i class="fas fa-check" ></i>
+            Valider</button>
+    </div>

@@ -1,0 +1,49 @@
+button.btn-light {
+    color: #4371f7;
+    background-color: #ffffff;
+    border: 2px solid;
+    border-color: #4371f7;
+  }
+  
+  button.btn-light:disabled,
+  .btn-light[disabled]{
+    border-radius: 6px;
+    background-color: #1F2D3D;
+    color: #ffffff;
+  }
+  
+  button.btn-light:hover, .btn-light:focus, .btn-light:active, .btn-light.active, .open>.dropdown-toggle.btn-light {
+  color: #fff;
+  background-color: #4371f7;
+  border-color:  #4371f7;
+  }
+
+
+
+  .badge-warning.custom {
+
+    background-color: #40a989;
+  }
+  .box
+  {
+   
+    margin: 0 auto;
+    padding: 2px;
+    background-color: #5cb9d7; 
+   
+  }
+  .content
+{
+  background: white;
+  padding: 2em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* .content2
+{
+    background: white;
+    padding: 2em;
+    text-align: center;
+    text-transform: uppercase;
+} */

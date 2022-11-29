@@ -1,0 +1,146 @@
+<div class="modal-header ">
+    <h4 *ngIf="userService.Method == 'Post'" class="modal-title text-secondary ml-1 m-2"
+        style="font-size: 24px; text-align: center;">Ajout d'un équipement</h4>
+    <h4 *ngIf="userService.Method == 'Put'" class="modal-title text-secondary ml-1 m-2" style="font-size: 24px;">
+        Modification d'un équipement</h4>
+    <h4 *ngIf="userService.Method == 'Detail'" class="modal-title text-secondary ml-1 m-2" style="font-size: 24px;">
+        Detail d'un équipement</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="card-body">
+    <div class="row" *ngIf="userService.Method == 'Put' || userService.Method == 'Detail'">
+        <div class="col">
+            <form [formGroup]="equipementservice.formEquipement">
+                <mat-form-field class="example-container mt-3 col-12" appearance="outline" [style.fontSize.px]="12.5"
+                    [style.marginTop.px]="8">
+                    <mat-label>Type d'équipement</mat-label>
+                    <mat-select (selectionChange)="GetlisteEquipement($event.value)" [(value)]="selected"
+                        [disabled]="true">
+                        <mat-option [style.fontSize.px]="13" [value]="0">
+                            <span>Réglementaire</span>
+                        </mat-option>
+                        <mat-option [style.fontSize.px]="13" [value]="1">
+                            <span>Non réglementaire</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+            </form>
+        </div>
+        <div class="col">
+            <form [formGroup]="equipementservice.formEquipement">
+                <mat-form-field class="example-container mt-3 col-12" appearance="outline" [style.fontSize.px]="12.5"
+                    [style.marginTop.px]="8">
+                    <mat-label>Nature d'équipement</mat-label>
+                    <mat-select (selectionChange)="GetFormEquipement($event.value)" [(value)]="selected1"
+                        [disabled]="true">
+                        <mat-option [style.fontSize.px]="13" *ngFor="let equipement of listeEquipements"
+                            [value]="equipement.id">
+                            <span>{{equipement.libelle}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+    <div class="row" *ngIf="userService.Method == 'Post'">
+        <div class="col">
+            <form [formGroup]="equipementservice.formEquipement">  <!--why use form groupe here ?-->
+                <mat-form-field class="example-container mt-3 col-12" appearance="outline" [style.fontSize.px]="12.5"
+                    [style.marginTop.px]="8">
+                    <mat-label>Type d'équipement</mat-label>
+                    <mat-select (selectionChange)="GetlisteEquipement($event.value)">
+                        <mat-option [style.fontSize.px]="13" [value]="0">
+                            <span>Réglementaire</span>
+                        </mat-option>
+                        <mat-option [style.fontSize.px]="13" [value]="1">
+                            <span>Non réglementaire</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+            </form>
+        </div>
+        <div class="col"> 
+            <form [formGroup]="equipementservice.formEquipement">   <!--why use form groupe here ?-->
+                <mat-form-field class="example-container mt-3 col-12" appearance="outline" [style.fontSize.px]="12.5"
+                    [style.marginTop.px]="8">
+                    <mat-label>Nature d'équipement</mat-label>
+                    <mat-select (selectionChange)="GetFormEquipement($event.value)">
+                        <mat-option [style.fontSize.px]="13" *ngFor="let equipement of listeEquipements"
+                            [value]="equipement.id">
+                            <span>{{equipement.libelle}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+    <!--Formulaire pour les equipements-->
+    <div *ngIf="displayForm==true" class="card card-info card-outline mt-3 p-2">
+        <div class="content ml-8">
+            <h1><span class="text-secondary">{{ nomEquipement}}</span></h1>
+        </div>
+        <div class="card-header">
+            <div class="row example-container mt-3 col-12">
+
+                <div class="col">
+                    <form [formGroup]="equipementservice.formEquipement">
+
+
+                        <div class="form-group">
+                            <label>N° Identifiant Interne:</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" formControlName="identifiantInterne">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>N° Série:</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" formControlName="numeroSerie">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col">
+                    <form [formGroup]="equipementservice.formEquipement">
+
+                        <div class="form-group">
+                            <label>Marque:</label>
+                            <div class="input-group">
+
+                                <input class="form-control" type="text" formControlName="marque">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <app-ph-metre *ngIf="natureEquipement==4 && nomEquipement=='PhMetre'"></app-ph-metre>
+                <app-thermometre-form *ngIf="natureEquipement==0 && nomEquipement=='Thermometre'"></app-thermometre-form>
+                <app-pont-bascule-form *ngIf="natureEquipement==0 && nomEquipement =='PontsBasculeElectronique'"></app-pont-bascule-form>
+                <app-thermohygometre-form *ngIf="natureEquipement==1 && nomEquipement=='Thermohygometre'"></app-thermohygometre-form>
+                <app-ensacheuse-form *ngIf="natureEquipement==1 && nomEquipement=='Ensacheuse'"></app-ensacheuse-form>
+                <app-balance-electronique *ngIf="natureEquipement==2 && nomEquipement =='BalanceElectronique'"></app-balance-electronique>
+                <app-bain-form *ngIf="natureEquipement==2 && nomEquipement=='Bain'"></app-bain-form>
+                <app-conductivimetre-form *ngIf="natureEquipement==3 && nomEquipement=='Conductivimetre'"></app-conductivimetre-form>
+                <app-capteur-de-pression-form *ngIf="natureEquipement==3 && nomEquipement=='CapteurDePression'"></app-capteur-de-pression-form>
+                <app-four-dorm *ngIf="natureEquipement==5 && nomEquipement=='Four'"></app-four-dorm>
+                <app-etuve-form *ngIf="natureEquipement==6 && nomEquipement=='Etuve'"></app-etuve-form>
+                <app-refregirateur-form *ngIf="natureEquipement==7 && nomEquipement =='Refrigerateur'"></app-refregirateur-form>
+                <app-debimetre-volumetrique-form *ngIf="natureEquipement==8 && nomEquipement=='DebimetreVolumetrique'"></app-debimetre-volumetrique-form>
+                <app-tunnel-de-refroidissement-form  *ngIf="natureEquipement==9 && nomEquipement=='TunnelDeRefroidissement'"></app-tunnel-de-refroidissement-form>
+                <app-transmtteur-de-pression *ngIf="natureEquipement==10 && nomEquipement=='TransmtteurDePression'"></app-transmtteur-de-pression>
+                <app-sonde-redox *ngIf="natureEquipement==11 && nomEquipement =='SondeRedox'"></app-sonde-redox>
+                <app-manometre-de-pression *ngIf="natureEquipement==12 && nomEquipement =='ManometreDePression'"></app-manometre-de-pression>
+                <app-debimetre-massique-form *ngIf="natureEquipement==13 && nomEquipement=='DebimetreMassique'"></app-debimetre-massique-form>
+                <app-chambre-froide *ngIf="natureEquipement==14 && nomEquipement=='ChambreFroide'"></app-chambre-froide>
+            </div>
+        </div>
+    </div>
+
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" color="#fff" size="medium" type="line-scale-party" [fullScreen]="true">
+        <p style="color: white">Chargement... </p>
+    </ngx-spinner>

@@ -1,0 +1,115 @@
+<div class="modal-header ">
+    <h4 *ngIf="userService.Method == 'Post'" class="modal-title text-secondary ml-1 m-2"
+      style="font-size: 24px; text-align: center;">Affectation Filiale Critère</h4>
+    <h4 *ngIf="userService.Method == 'Put'" class="modal-title text-secondary ml-1 m-2"
+      style="font-size: 24px;">Modification Filiale Critère</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body ">
+    <div class="container">
+  
+      
+      <form [formGroup]="filialeCritereService.formFilialeCritere">
+        <div class="form-group">
+  
+          <label>Secteur : </label>
+          <div class="input-group" *ngIf="userService.Method == 'Post'">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-chevron-circle-down " style="color:lightcoral;"></i></span>
+            </div>
+            <ng-select [items]="subsidiaryService.listSectors" (change)="onChangeSector($event)"
+              style="width: 410px;" placeholder="Sélectionnez un secteur"
+                bindLabel="sectorLabel" autofocus bindValue="sectorId"
+              notFoundText="Pas de résultat" loadingText="Chargement....">
+              <ng-template ng-option-tmp let-item="item">
+                {{item.sectorLabel}}
+              </ng-template>
+            </ng-select>
+          </div>
+
+          <!-- <div class="input-group" *ngIf="userService.Method == 'Put'">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-chevron-circle-down " style="color:lightcoral;"></i></span>
+            </div>
+            <input type="text" disabled [value]="userService.User.userFullName" class="form-control" id="inputAddress23">
+
+          </div> -->
+
+
+
+        </div>
+
+        <div class="form-group">
+  
+            <label>Filiale : </label>
+            <div class="input-group" *ngIf="userService.Method == 'Post'">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-chevron-circle-down " style="color:lightcoral;"></i></span>
+              </div>
+              <ng-select [items]="subsidiaryService.listSubsidiary" (change)="onChangeSubsidiary($event)"
+                style="width: 410px;" formControlName="fkFiliale" placeholder="Sélectionnez une Filiale"
+                  bindLabel="subsidiaryCode"  bindLabel="label" autofocus bindValue="subsidiaryId"
+                notFoundText="Pas de résultat" loadingText="Chargement....">
+                <ng-template ng-option-tmp let-item="item">
+                  {{item.label}}
+                  {{item.subsidiaryCode}}
+                </ng-template>
+              </ng-select>
+            </div>
+  
+            <!-- <div class="input-group" *ngIf="userService.Method == 'Put'">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-chevron-circle-down " style="color:lightcoral;"></i></span>
+              </div>
+              <input type="text" disabled [value]="userService.User.userFullName" class="form-control" id="inputAddress23">
+  
+            </div> -->
+  
+  
+  
+          </div>
+  
+        <div class="form-group">
+          <!-- <label>Critère :</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-chevron-circle-down" style="color:lightcoral;"></i></span>
+            </div>
+            <select class="form-control" formControlName="fkCritere" [class.is-invalid]="filialeCritereService.formFilialeCritere.controls.fkCritere.errors?.required  &&
+            filialeCritereService.formFilialeCritere.controls.fkCritere.touched"  style="width: 410px;">
+              <option value="" disabled selected>Sélectionnez un critère </option>
+              <option *ngFor=" let S of critereService.listCritere" [value]="S.critereId">{{S.libelleCritere}}
+              </option>
+            </select>
+          </div> -->
+          <label>Critère : </label>
+            <div class="input-group" *ngIf="userService.Method == 'Post'">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-chevron-circle-down " style="color:lightcoral;"></i></span>
+              </div>
+              <ng-select [items]="critereService.listCritere" 
+                style="width: 410px;" formControlName="fkCritere" placeholder="Sélectionnez un critère"
+                  bindLabel="libelleCritere" autofocus bindValue="critereId"
+                notFoundText="Pas de résultat" loadingText="Chargement....">
+                <ng-template ng-option-tmp let-item="item">
+                    {{item.libelleCritere}}
+                </ng-template>
+              </ng-select>
+            </div>
+        </div>
+      </form>
+  
+    </div>
+  </div>
+  <div class="modal-footer ">
+    <button type="button" class=" btn btn-light col-3 mr-2 " (click)="onSubmit()"
+      [disabled]="filialeCritereService.formFilialeCritere.invalid"><i class="fas fa-check"></i>
+      Valider</button>
+  </div>
+
+  
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" color="#fff" size="medium" type="line-scale-party" [fullScreen]="true">
+  <p style="color: white">Chargement... </p>
+</ngx-spinner>

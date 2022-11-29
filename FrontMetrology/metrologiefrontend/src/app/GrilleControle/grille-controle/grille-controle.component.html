@@ -1,0 +1,85 @@
+<div class="content">
+
+
+  <div class="card card-info  mt-3 p-2">
+
+    <h3 style=" font-family: 'Inter', sans-serif;  color: #091255; font-size: larger;" id="fullNameUser"> 
+        <b>Grille de contrôle de La Filiale <span style="color:#4371f7">{{lab}}</span> </b> 
+    </h3>
+    <img src="assets\img\output-onlinepngtools.png">
+
+   
+ </div>
+
+ <div class="card">
+  <div class="card-body"> 
+   
+  <div class="form-group">
+    <label style=" font-family: 'Inter', sans-serif; " >Choisir une date :</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-calendar-alt" style="color:#091255"></i></span>
+      </div>
+      <input class="form-control" type="month" style="width: 10%; height:5%; text-align: left;" value="{{DateGrille}}"
+        (change)="dateGrille($event)">
+    </div>
+  </div>
+
+    
+</div> </div>
+
+<div class="card  mt-3 p-2">
+  <!-- <pre>{{NoteCritereService.addNoteCritereForm.value|json}}</pre> -->
+  <form [formGroup]="NoteCritereService.addNoteCritereForm" #f="ngForm">
+    <div>
+      <table style=" font-family: 'Inter', sans-serif; " class="table table-striped table-bordered">
+        <thead class="text-white " style="background-color: #4371f7  !important;">
+          <tr>
+            <th class="align-middle" >Critere</th>
+            <th class="align-middle" >Coefficient</th>
+            <th class="align-middle" >Unité</th>
+          </tr>
+        </thead>
+        <ng-container *ngFor="let data of critereService.listCritereDto ; ">
+          <ng-container *ngFor="let c of data.critere;let i = index ;">
+            <tr>
+              <td>{{c.libelleCritere}}</td>
+              <td class="align-middle" style="text-align: center;">{{c.coefficient}}</td>
+              <td class="align-middle" style="text-align: center;">
+                <div>
+                <input class=" form-control align-middle" (change)="changeFn(c,$event)" value="{{c.note}}"  type="number" value=""
+                  style="width: 80px; text-align: center;" >
+                  <i class=" form-control align-middle" *ngIf="c.done === true"  class="fas fa-check-circle"></i>
+                </div>  </td>
+            
+            </tr>
+          </ng-container>
+          <tr style="background-color: #eaecee ; text-align: center;" class="align-middle">
+            <td colspan="2" class="align-middle">
+              <strong class="align-middle"
+                style="text-align: center; color:#4371f7 ; font-size: 16px; font-family: 'Poppins', sans-serif;">Moyenne
+                de l'indicateur « {{data.axe}} »</strong>
+            </td>
+            <td>
+              <input class="form-control align-middle" type="text" style="width: 100px; text-align: center;"
+               [disabled]="" value="{{data.noteAxe}}" disabled>
+            </td>
+          </tr>
+          
+        </ng-container>
+        <tr style="background-color: #c5cfda ; text-align: center;" class="align-middle">
+          <td colspan="2" class="align-middle">
+            <strong class="align-middle"
+              style="text-align: center; color:#091255 ; font-size: 16px;">Moyenne
+              de la Filiale <span style="color:#4371f7">{{lab}}</span></strong>
+          </td>
+          <td>
+            <input class="form-control align-middle" type="text" style="color:#091255 ;background-color: #c5cfda ;width: 100px; text-align: center;" placeholder="0"
+             [disabled]="" value="{{noteFinalFiliale}}" disabled>
+          </td>
+        </tr>
+      </table>
+    </div>
+ 
+  </form>
+</div>

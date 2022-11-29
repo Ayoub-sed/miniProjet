@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Metrologie.data\Metrologie.Data.csproj" />
+    <ProjectReference Include="..\Metrologie.domain\Metrologie.Domain.csproj" />
+  </ItemGroup>
+
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties appsettings_1json__JsonSchema="" properties_4launchsettings_1json__JsonSchema="" />
+    </VisualStudio>
+  </ProjectExtensions>
+
+
+</Project>
