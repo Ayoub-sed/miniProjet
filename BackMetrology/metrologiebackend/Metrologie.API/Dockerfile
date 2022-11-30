@@ -6,11 +6,11 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
-WORKDIR /src
+WORKDIR /BackMetrology/metrologiebackend
 COPY ["Metrologie.API/Metrologie.API.csproj", "Metrologie.API/"]
 RUN dotnet restore "Metrologie.API/Metrologie.API.csproj"
 COPY . .
-WORKDIR "/src/Metrologie.API"
+WORKDIR "/BackMetrology/metrologiebackend/Metrologie.API"
 RUN dotnet build "Metrologie.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
